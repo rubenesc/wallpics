@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @gallery.title %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @gallery.state %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @gallery.path %>
+</p>
+
+<p>
+  <b>Cover:</b>
+  <%= @gallery.cover %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @gallery.description %>
+</p>
+
+<p>
+  <b>Number pics:</b>
+  <%= @gallery.number_pics %>
+</p>
+
+
+<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+<%= link_to 'Back', galleries_path %>
+
+
+<br/><br/>
+
+<div id="images">
+  <% for image in @gallery.images %>
+    <div id="image">
+      <%= image_tag image.image_url.to_s %>
+      <div class="name"><%= image.description %></div>
+      <div actions>
+        <%= link_to "edit", edit_image_path(image) %>
+        <%= link_to "remove", image, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
